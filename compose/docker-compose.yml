@@ -1,0 +1,14 @@
+services:
+  web:
+    build: ../app                     # app/Dockerfile 로 빌드
+    image: e1-web:compose
+    ports:
+      - "${WEB_PORT:-8090}:80"        # WEB_PORT 없으면 8090
+    environment:
+      APP_ENV: ${APP_ENV:-dev}        # APP_ENV 없으면 dev
+  checker:
+    image: curlimages/curl:8.11.1
+    init: true
+    command: ["sh", "-c", "sleep infinity"]   # 계속 켜두기
+    depends_on:
+      - web
