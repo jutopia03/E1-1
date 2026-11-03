@@ -1,0 +1,10 @@
+# secrets
+.env
+*.pem
+id_rsa*
+id_ed25519*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
